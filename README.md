@@ -1,4 +1,4 @@
-# E-Commerce Website Project with Razor Pages and SQL Server
+# E-Commerce Website Project with Razor Pages and SQL Server for Final Semester 
 
 ## Overview
 
@@ -18,6 +18,3 @@ This e-commerce website, developed as a final project for a junior university co
 - **SQL Server**: Robust database management for secure and efficient data handling.
 - **ASP.NET Core**: Backend framework offering scalability and performance.
 
-## Installation and Setup
-
-1. **Clone the Repository**
