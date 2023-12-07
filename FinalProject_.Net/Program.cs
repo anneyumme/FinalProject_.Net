@@ -1,3 +1,6 @@
+using FinalProject_.Net.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace FinalProject_.Net
 {
 	public class Program
@@ -8,6 +11,8 @@ namespace FinalProject_.Net
 
 			// Add services to the container.
 			builder.Services.AddRazorPages();
+			builder.Services.AddDbContext<MyDbContext>(options =>
+							options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 			var app = builder.Build();
 
