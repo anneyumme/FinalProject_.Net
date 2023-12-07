@@ -13,6 +13,10 @@ namespace FinalProject_.Net
 			builder.Services.AddRazorPages();
 			builder.Services.AddDbContext<MyDbContext>(options =>
 							options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+			builder.Services.AddAuthentication("UserLoginCookie").AddCookie("UserLoginCookie", options =>
+			{
+				options.Cookie.Name = "UserLoginCookie";
+			});
 
 			var app = builder.Build();
 
@@ -28,7 +32,7 @@ namespace FinalProject_.Net
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.MapRazorPages();
