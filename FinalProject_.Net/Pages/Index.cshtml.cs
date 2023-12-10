@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FinalProject_.Net.Pages
 {
-	[Authorize(Roles = "Admin")]
+	//[Authorize(Roles = "Admin")]
 	public class IndexModel : PageModel
 	{
 		private readonly ILogger<IndexModel> _logger;
@@ -16,7 +16,7 @@ namespace FinalProject_.Net.Pages
 
 		public void OnGet()
 		{
-
+		 
 		}
 	}
 }

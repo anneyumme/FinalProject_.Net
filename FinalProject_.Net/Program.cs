@@ -16,6 +16,7 @@ namespace FinalProject_.Net
 			builder.Services.AddAuthentication("UserLoginCookie").AddCookie("UserLoginCookie", options =>
 			{
 				options.Cookie.Name = "UserLoginCookie";
+				options.LoginPath = "/Account/Login";
 			});
 
 			var app = builder.Build();

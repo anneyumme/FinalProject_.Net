@@ -1,0 +1,48 @@
+﻿<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+<!-- MDB ESSENTIAL -->
+<link rel="stylesheet" href="~/css/mdb.min.css"/>
+<!-- MDB PLUGINS -->
+<link rel="stylesheet" href="~/plugins/css/all.min.css"/>
+@if (TempData.ContainsKey("Success"))
+{
+    <div
+        class="toast fade mx-auto"
+        id="basic-success-example"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-mdb-toast-init
+        data-mdb-autohide="true"
+        data-mdb-delay="4000"
+        data-mdb-position="top-right"
+        data-mdb-append-to-body="true"
+        data-mdb-stacking="true"
+        data-mdb-width="350px"
+        data-mdb-color="success"
+    >
+        <div class="toast-header">
+            <strong class="me-auto">Successfully Notification</strong>
+            <small>Recently</small>
+            <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["Success"]</div>
+    </div>
+}
+
+
+<!-- MDB ESSENTIAL -->
+<script type="text/javascript" src="~/js/mdb.umd.min.js"></script>
+<!-- MDB PLUGINS -->
+<script type="text/javascript" src="~/plugins/js/all.min.js"></script>
+<script type="text/javascript" src="~/js/saler/index.js"></script>
+<script>
+    // Basic example
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    var toastList = toastElList.map(function (toastEl) {
+        return new mdb.Toast(toastEl)
+    })
+    toastList[0].show()
+</script>
