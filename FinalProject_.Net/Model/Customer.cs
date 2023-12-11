@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.ComponentModel.DataAnnotations;
 
 namespace FinalProject_.Net.Model
 {
@@ -9,8 +10,9 @@ namespace FinalProject_.Net.Model
 		public string FName { get; set; }
 		public string LName { get; set; }
 		public string EmailAddress { get; set; }
-		public string Password { get; set; }
 		public string Address { get; set; }
 		public string PhoneNumber { get; set; }
+		public ICollection<Order> Orders { get; set; }
+		
 	}
 }

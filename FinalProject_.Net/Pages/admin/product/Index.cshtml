@@ -3,10 +3,11 @@
 @{
     Layout = "_LayoutAdmin";
     ViewData["isOverview"] = false;
-    ViewData["Title Dashboard"] = "Saler Management";
+    ViewData["Title Dashboard"] = "Product Management";
     ViewData["Category"] = "Manage";
     ViewData["SubCategory"] = "List";
 }
+
 
 <div class="container px-4">
     <div class="row">
@@ -22,7 +23,7 @@
                             </div>
                         </div>
                         <div class="p-2">
-                            <a type="button" class="btn btn-primary" asp-page="/admin/saler/create" data-mdb-ripple-init>
+                            <a type="button" class="btn btn-primary" asp-page="/admin/product/create" data-mdb-ripple-init>
                                 <i class="fas fa-circle-plus fa-lg"></i>
                             </a>
                         </div>
@@ -33,26 +34,26 @@
                         <table>
                             <thead>
                             <tr>
-                                <th class="th-sm">First Name</th>
-                                <th class="th-sm">Last Name</th>
-                                <th class="th-sm">Email</th>
-                                <th class="th-sm">Address</th>
+                                <th class="th-sm">Product Name</th>
+                                <th class="th-sm">Price</th>
+                                <th class="th-sm">Current stock</th>
+                                <th class="th-sm">Description</th>
                                 <th class="th-sm">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach(var item in Model.listSaler)
+                                @foreach(var item in Model.listProducts)
                                 {
                                     <tr>
-                                        <td>@item.FName</td>
-                                        <td>@item.LName</td>
-                                        <td>@item.EmailAddress</td>
-                                        <td>@item.Address</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Price</td>
+                                        <td>@item.Stock</td>
+                                        <td>@item.Description</td>
                                         <td>
-                                            <a type="button" class="btn btn-primary"  asp-page="/admin/saler/edit" asp-route-id="@item.Id" data-mdb-ripple-init>
+                                            <a type="button" class="btn btn-primary" asp-page="/admin/product/edit" asp-route-id="@item.Id" data-mdb-ripple-init>
                                                 <i class="fas fa-edit fa-lg"></i>
                                             </a>
-                                            <a class="btn btn-danger popconfirm-toggle" asp-page="/admin/saler/index" asp-route-id="@item.Id" asp-route-handler="Delete"
+                                            <a class="btn btn-danger popconfirm-toggle" asp-page="/admin/product/index" asp-route-id="@item.Id" asp-route-handler="Delete"
                                                onclick="confirmAction(event, this)"
                                                data-mdb-popconfirm-init
                                                data-mdb-position="top"
@@ -65,9 +66,7 @@
                                 }    
                             </tbody>
                         </table>
-
                     </div>
-
                 </div>
             </div>
         </div>

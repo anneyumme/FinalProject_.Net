@@ -1,0 +1,31 @@
+﻿
+@if (TempData.ContainsKey("Error"))
+{
+    <div class="toast fade mx-auto"
+         id="basic-danger-example"
+         role="alert"
+         aria-live="assertive"
+         aria-atomic="true"
+         data-mdb-toast-init
+         data-mdb-autohide="true"
+         data-mdb-delay="4000"
+         data-mdb-position="top-right"
+         data-mdb-append-to-body="true"
+         data-mdb-stacking="true"
+         data-mdb-width="350px"
+         data-mdb-color="danger">
+        <div class="toast-header">
+            <strong class="me-auto">Error Notification</strong>
+            <small>Recently</small>
+            <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["Error"]</div>
+    </div>
+}
+<script>
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    var toastList = toastElList.map(function (toastEl) {
+        return new mdb.Toast(toastEl)
+    })
+    toastList[1].show()
+</script>

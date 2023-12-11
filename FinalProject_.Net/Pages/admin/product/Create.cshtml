@@ -1,0 +1,92 @@
+﻿@page
+@model CreateModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["isOverview"] = false;
+    ViewData["Title Dashboard"] = "Create New Product";
+    ViewData["Category"] = "Manage";
+    ViewData["SubCategory"] = "Create";
+}
+<!-- Container for demo purpose -->
+<div class="container px-4">
+
+    <!--Section: Profile-->
+    <section>
+        <form method="post" id="form1" enctype="multipart/form-data">
+            <div class="row gx-xl-5">
+                <div class="col-md-8 mb-4 mb-md-0">
+                    <div class="card shadow-0 mb-5">
+                        <div class="card-header py-3">
+                            <strong>Create new product</strong>
+                        </div>
+                        <div class="card-body text-center">
+
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <input type="text" id="formNameProduct" asp-for="product.Name" class="form-control" required/>
+                                <label class="form-label" for="formNameProduct">Name</label>
+                            </div>
+
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <input type="number" class="form-control" asp-for="product.Price" required />
+                                <label class="form-label" for="formEmail" >Price</label>
+                            </div>
+
+                            <div class="form-outline mb-4 data-mdb-input-init" data-mdb-input-init>
+                                <input type="number" id="formPosition" class="form-control" asp-for="product.Stock" required/>
+                                <label class="form-label" for="formName">Stock</label>
+                            </div>
+
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <textarea class="form-control" id="formDescription" asp-for="product.Description" required rows="4"> </textarea>
+                                <label class="form-label" for="formDescription">Description</label>
+                            </div>
+
+                            <button id="submitBoth" onclick="submitForms()" class="btn btn-primary mb-2">
+                                Create new product
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card shadow-0">
+                        <div class="card-body text-center">
+                            <div class="mt-1 mb-4">
+                                <strong>Product photo</strong>
+                            </div>
+                            @* <img class="rounded-circle shadow-1 mb-3" src="https://mdbootstrap.com/img/new/avatars/1.jpg"
+                                 alt="avatar" style="width: 150px;"> *@
+                            <div id="dnd-custom-default-msg" class="file-upload-wrapper">
+                                <input
+                                    name="imageFile"
+                                    required
+                                    type="file"
+                                    id="file-upload"
+                                    class="file-upload-input"
+                                    data-mdb-default-msg="Upload your image in here"
+                                    data-mdb-main-error="Error"
+                                    data-mdb-accepted-Extensions="image/jpeg, image/png"
+                                    data-mdb-file-upload-init/>
+                            </div>
+                            <p class="mb-1" style="margin-top: 15px" id="displayText" >
+                                <strong></strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+    <!--Section: Profile-->
+
+</div>
+<!-- Container for demo purpose -->
+
+<!--Main layout-->
+<script>
+   
+        document.getElementById('formNameProduct').addEventListener('input', function () {
+            document.getElementById('displayText').innerHTML = '<strong>' + this.value + '</strong>';
+        });
+</script>

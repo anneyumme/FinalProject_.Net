@@ -13,6 +13,7 @@ namespace FinalProject_.Net.Model
         public string EmailAddress { get; set; }
         public string? AdditionalInfo { get; set; }
         public string? Password { get; set; }
+        public ICollection<Order> Orders { get; set; }
         
     }
 }

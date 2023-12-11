@@ -17,7 +17,7 @@ namespace FinalProject_.Net.Pages.Account
         
         public async Task<IActionResult> OnPost()
         {
-	        if (customer.EmailAddress == "admin@admin.com" && customer.Password == "admin")
+	        if (customer.EmailAddress == "admin@admin.com" )
 	        {
 		        var listCalm = new List<Claim>()
 		        {

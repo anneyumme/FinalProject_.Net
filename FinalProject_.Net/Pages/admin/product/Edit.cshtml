@@ -1,0 +1,113 @@
+﻿@page
+@model EditModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["isOverview"] = false;
+    ViewData["Title Dashboard"] = "Edit your Product";
+    ViewData["Category"] = "Manage";
+    ViewData["SubCategory"] = "Edit";
+}
+<!-- Container for demo purpose -->
+<div class="container px-4">
+
+    <!--Section: Profile-->
+    <section>
+        <form method="post" id="form1" enctype="multipart/form-data">
+            <div class="row gx-xl-5">
+                <div class="col-md-8 mb-4 mb-md-0">
+                    <div class="card shadow-0 mb-5">
+                        <div class="card-header py-3">
+                            <strong>Edit product</strong>
+                        </div>
+                        <div class="card-body text-center">
+                            <input type="hidden" asp-for="product.Id" />
+                            <input type="hidden" asp-for="product.ImageData" />
+
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <input type="text" id="formNameProduct" asp-for="product.Name" class="form-control" required/>
+                                <label class="form-label" for="formNameProduct">Name</label>
+                            </div>
+
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <input type="number" class="form-control" asp-for="product.Price" required/>
+                                <label class="form-label" for="formEmail">Price</label>
+                            </div>
+
+                            <div class="form-outline mb-4 data-mdb-input-init" data-mdb-input-init>
+                                <input type="number" id="formPosition" class="form-control" asp-for="product.Stock" required/>
+                                <label class="form-label" for="formName">Stock</label>
+                            </div>
+
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <textarea class="form-control" id="formDescription" asp-for="product.Description" required rows="4"> </textarea>
+                                <label class="form-label" for="formDescription">Description</label>
+                            </div>
+
+                            <button id="submitBoth" onclick="submitForms()" class="btn btn-primary mb-2">
+                                Update product
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card shadow-0">
+                        <div class="card-body text-center">
+                            <div class="mt-1 mb-4">
+                                <strong>Product photo</strong>
+                            </div>
+                          @*   <a data-mdb-ripple-init href="#!">
+                                <img class="img-fluid rounded" src="/admin/product/Edit?handler=Image&id=@Model.product.Id"
+                                     alt="avatar" style="width: 250px;">
+                            </a> *@
+
+                          <div>
+                              <div class="mb-4 d-flex justify-content-center">
+                                  <img id="selectedImage" src="/admin/product/Edit?handler=Image&amp;id=@Model.product.Id"
+                                       alt="example placeholder"   class="img-fluid rounded"
+                                       style="width: 300px;" />
+                              </div>
+                              <div class="d-flex justify-content-center">
+                                  <div class="btn btn-primary btn-rounded">
+                                      <label class="form-label text-white m-1" for="customFile1">Choose your image</label>
+                                        <input type="file" name="imageFile" accept="image/png, image/gif, image/jpeg" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+                                  </div>
+                              </div>
+                          </div>
+                            <p class="mb-1" style="margin-top: 15px" id="displayText">
+                                <strong></strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+    <!--Section: Profile-->
+
+</div>
+<!-- Container for demo purpose -->
+<!--Main layout-->
+<script>
+
+    document.getElementById('formNameProduct').addEventListener('input',
+        function() {
+            document.getElementById('displayText').innerHTML = `<strong>${this.value}</strong>`;
+        });
+
+    function displaySelectedImage(event, elementId) {
+        const selectedImage = document.getElementById(elementId);
+        const fileInput = event.target;
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                selectedImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>

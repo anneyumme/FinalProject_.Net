@@ -37,8 +37,13 @@ namespace FinalProject_.Net
 			app.UseAuthorization();
 
 			app.MapRazorPages();
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/admin/product/create");
+                return Task.CompletedTask;
+            });
 
-			app.Run();
+            app.Run();
 		}
 	}
 }

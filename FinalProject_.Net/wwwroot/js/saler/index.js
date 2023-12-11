@@ -6,7 +6,7 @@ document.getElementById('datatable-search-input').addEventListener('keyup', func
 
         var matchFound = false;
 
-        for (var i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+        for (var i = 1; i < rows.length; i++) { 
             var cells = rows[i].getElementsByTagName('td');
             var rowContainsQuery = false;
 

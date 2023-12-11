@@ -65,8 +65,8 @@
             </a>
         </li>
         <li class="sidenav-item">
-            <a class="sidenav-link" href="">
-                <i class="fas fa-database fa-fw me-3"></i><span>Databases</span>
+            <a class="sidenav-link" asp-page="/admin/product/index" >
+               <i class="fas fa-database fa-fw me-3"></i><span>Product management </span>
             </a>
         </li>
         <li class="sidenav-item">
@@ -261,6 +261,7 @@
 </header>
 
 <main role="main" class="mb-5">
+
     @RenderBody()
 </main>
 
@@ -272,7 +273,8 @@
 <!-- MDB PLUGINS -->
 <script type="text/javascript" src="~/plugins/js/all.min.js"></script>
     <script type="text/javascript" src="~/js/saler/index.js"></script>
-
+<partial name="_NotificationView" />
+<partial name="_NotificationErrorView" />
 
 @await RenderSectionAsync("Scripts", false)
 </body>
@@ -284,5 +286,12 @@
             disableFuture: true
 
         });
+
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    var toastList = toastElList.map(function (toastEl) {
+        return new mdb.Toast(toastEl)
+    })
+    toastList[0].show()
+
 </script>
 </html>
