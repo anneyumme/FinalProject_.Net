@@ -9,154 +9,95 @@
     ViewData["SubCategory"]="POS System";
 }
 
+
 <!-- Container for demo purpose -->
 <div class="container px-4">
     <!--Section: Content-->
     <section class="text-center">
         <div class="row gx-xl-5">
-            <div class="col-lg-6 mb-xl-5 mb-4">
-                <div class="card shadow-0 h-100">
-                    <div class="card-header py-3">
-                        <p class="mb-0">Users & Sessions</p>
-                    </div>
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-0">
                     <div class="card-body">
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <p class="mb-2">Users</p>
-                                <h5>38.6K</h5>
-                                <p class="text-success small">
-                                    <i class="fas fa-caret-up me-1"></i><span>72.0%</span>
-                                </p>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="p-3 badge-primary rounded-4">
+                                    <i class="fas fa-dollar-sign fa-lg fa-fw"></i>
+                                </div>
                             </div>
-                            <div>
-                                <p class="mb-2">Sessions</p>
-                                <h5>50.9K</h5>
-                                <p class="text-success small">
-                                    <i class="fas fa-caret-up me-1"></i><span>82.0%</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="mb-2">New Users</p>
-                                <h5>34.0K</h5>
-                                <p class="text-danger small">
-                                    <i class="fas fa-caret-down me-1"></i><span>12.0%</span>
-                                </p>
+                            <div class="flex-grow-1 ms-4">
+                                <p class="text-muted mb-1">Total revenue</p>
+                                <h2 class="mb-0">
+                                    @Model.TotalRevenue
+                                    <span class="" style="font-size: 0.875rem">
+                                        USD</span>
+                                </h2>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card shadow-0">
+                    <div class="card-body">
 
-                        <div id="chart-users-sessions"></div>
+                        <canvas
+                            data-mdb-chart-init
+                            data-mdb-chart="line"
+                            data-mdb-dataset-label="@Model.LabelTipsRevenue"
+                            data-mdb-labels="[@Model.ChartLabelRevenue]"
+                            data-mdb-dataset-data="[@Model.ChartDataRevenue]"
+                        ></canvas>
+                       
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6 mb-xl-5 mb-4">
-                <div class="card shadow-0 h-100">
-                    <div class="card-header py-3">
-                        <p class="mb-0">Revenue & Conversion Rate</p>
-                    </div>
+
+
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-0">
                     <div class="card-body">
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <p class="mb-2">Revenue</p>
-                                <h5>$5.35KK</h5>
-                                <p class="text-success small">
-                                    <i class="fas fa-caret-up me-1"></i><span>-21.6%</span>
-                                </p>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="p-3 badge-primary rounded-4">
+                                    <i class="fas fa-receipt fa-lg fa-fw"></i>
+                                </div>
                             </div>
-                            <div>
-                                <p class="mb-2">Transactions</p>
-                                <h5>88</h5>
-                                <p class="text-danger small">
-                                    <i class="fas fa-caret-down me-1"></i><span>-22.8%</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="mb-2">Conversion</p>
-                                <h5>0.2%</h5>
-                                <p class="text-danger small">
-                                    <i class="fas fa-caret-down me-1"></i><span>-1.7%</span>
-                                </p>
+                            <div class="flex-grow-1 ms-4">
+                                <p class="text-muted mb-1">Total Order</p>
+                                <h2 class="mb-0">
+                                    @Model.TotalOrder
+                                    @* <span class="" style="font-size: 0.875rem">
+                                        USD</span> *@
+                                    @* <span class="text-success" style="font-size: 0.875rem"><i class="fas fa-arrow-up fa-sm"></i>
+                                        <span> 8.3%</span></span> *@
+                                </h2>
                             </div>
                         </div>
-
-                        <div id="chart-revenue-conversion"></div>
                     </div>
+
                 </div>
             </div>
-            <div class="col-lg-6 mb-xl-5 mb-4">
-                <div class="card shadow-0 h-100">
-                    <div class="card-header py-3">
-                        <p class="mb-0">Site Health</p>
-                    </div>
+            <section class="mb-8" style="margin-top:30px">
+                <div class="card shadow-0">
                     <div class="card-body">
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <p class="mb-2">Bounce Rate</p>
-                                <h5>41.4%</h5>
-                                <p class="text-success small">
-                                    <i class="fas fa-caret-down me-1"></i><span>-3.3%</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="mb-2">Avg. Session Duration</p>
-                                <h5>03:20</h5>
-                                <p class="text-success small">
-                                    <i class="fas fa-caret-up me-1"></i><span>3.6%</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="mb-2">Avg. Page Load Time</p>
-                                <h5>3.9s</h5>
-                                <p class="text-danger small">
-                                    <i class="fas fa-caret-up me-1"></i><span>12.0%</span>
-                                </p>
-                            </div>
-                        </div>
+                        <strong>Chart by Order</strong>
+                        <!-- Chart -->
+                        <canvas
+                            data-mdb-chart-init
+                            data-mdb-chart="line"
+                            data-mdb-dataset-label="Traffic"
+                            data-mdb-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+                            data-mdb-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+                        ></canvas>       
+                    </div>
+                </div>
 
-                        <div id="chart-site-health"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-xl-5 mb-4">
-                <div class="card shadow-0 h-100">
-                    <div class="card-header py-3">
-                        <p class="mb-0">Device Performance</p>
-                    </div>
-                    <div class="card-body d-flex align-items-center">
-                        <div class="w-100" id="chart-device-performance"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mb-xl-5 mb-4">
-                <div class="card shadow-0 h-100">
-                    <div class="card-header py-3">
-                        <p class="mb-0">Transactions</p>
-                    </div>
-                    <div class="card-body d-flex align-items-center">
-                        <div class="w-100" id="chart-transactions"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mb-xl-5 mb-4">
-                <div class="card shadow-0 h-100">
-                    <div class="card-header py-3">
-                        <p class="mb-0">Sessions</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="px-lg-5 mx-lg-5" id="chart-sessions"></div>
-                    </div>
-                </div>
-            </div>
+            </section>
+           
         </div>
     </section>
     <!--Section: Content-->
 </div>
 <!-- Container for demo purpose -->
-
-
-
 
 
 

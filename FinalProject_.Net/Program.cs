@@ -39,7 +39,7 @@ namespace FinalProject_.Net
 			app.MapRazorPages();
             app.MapGet("/", context =>
             {
-                context.Response.Redirect("/admin/product/create");
+                context.Response.Redirect("/admin/");
                 return Task.CompletedTask;
             });
 
