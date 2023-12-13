@@ -37,7 +37,6 @@
                 </div>
                 <div class="card shadow-0">
                     <div class="card-body">
-
                         <canvas
                             data-mdb-chart-init
                             data-mdb-chart="line"
@@ -49,8 +48,6 @@
                     </div>
                 </div>
             </div>
-
-
 
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="card shadow-0">
@@ -75,23 +72,18 @@
                     </div>
 
                 </div>
-            </div>
-            <section class="mb-8" style="margin-top:30px">
                 <div class="card shadow-0">
                     <div class="card-body">
-                        <strong>Chart by Order</strong>
-                        <!-- Chart -->
-                        <canvas
-                            data-mdb-chart-init
-                            data-mdb-chart="line"
-                            data-mdb-dataset-label="Traffic"
-                            data-mdb-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
-                            data-mdb-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
-                        ></canvas>       
+
+                        <canvas data-mdb-chart-init
+                                data-mdb-chart="line"
+                                data-mdb-dataset-label="@Model.LabelTipsOrder"
+                                data-mdb-labels="[@Model.ChartLabelOrder]"
+                                data-mdb-dataset-data="[@Model.ChartDataOrder]">
+                        </canvas>
                     </div>
                 </div>
-
-            </section>
+            </div>
            
         </div>
     </section>

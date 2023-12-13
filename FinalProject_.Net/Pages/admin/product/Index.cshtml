@@ -35,6 +35,7 @@
                             <thead>
                             <tr>
                                 <th class="th-sm">Product Name</th>
+                                <th class="th-sm">Product Image</th>
                                 <th class="th-sm">Price</th>
                                 <th class="th-sm">Current stock</th>
                                 <th class="th-sm">Description</th>
@@ -46,6 +47,11 @@
                                 {
                                     <tr>
                                         <td>@item.Name</td>
+                                        <td>
+                                            <img src="/admin/product/Edit?handler=Image&id=@item.Id" 
+                                                 class="img-fluid rounded"
+                                            alt="@item.Name" width="100" height="100" />
+                                        </td>
                                         <td>@item.Price</td>
                                         <td>@item.Stock</td>
                                         <td>@item.Description</td>
