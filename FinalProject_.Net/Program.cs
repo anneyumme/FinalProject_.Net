@@ -1,4 +1,5 @@
 using FinalProject_.Net.Data;
+using FinalProject_.Net.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject_.Net
@@ -18,6 +19,9 @@ namespace FinalProject_.Net
 				options.Cookie.Name = "UserLoginCookie";
 				options.LoginPath = "/Account/Login";
 			});
+			builder.Services.AddScoped<TokenService>();
+			builder.Services.AddScoped<PasswordService>();
+			builder.Services.AddScoped<EmailService>();
 
 			var app = builder.Build();
 
@@ -35,6 +39,7 @@ namespace FinalProject_.Net
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
+		
 
 			app.MapRazorPages();
             app.MapGet("/", context =>
@@ -42,8 +47,10 @@ namespace FinalProject_.Net
                 context.Response.Redirect("/admin/");
                 return Task.CompletedTask;
             });
+            app.UseExceptionHandler("/Error");
+            app.UseStatusCodePagesWithReExecute("/Error");
 
-            app.Run();
+			app.Run();
 		}
 	}
 }

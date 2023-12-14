@@ -6,15 +6,15 @@ namespace FinalProject_.Net.Pages
 {
 	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 	[IgnoreAntiforgeryToken]
-	public class Error : PageModel
+	public class ErrorModel : PageModel
 	{
 		public string? RequestId { get; set; }
 
 		public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-		private readonly ILogger<Error> _logger;
+		private readonly ILogger<ErrorModel> _logger;
 
-		public Error(ILogger<Error> logger)
+		public ErrorModel(ILogger<ErrorModel> logger)
 		{
 			_logger = logger;
 		}
