@@ -1,0 +1,89 @@
+﻿@page
+@model IndexModel
+@{
+    int j = 0;
+    int stt = 0;
+    Layout = "_LayoutAdmin";
+    ViewData["isOverview"] = false;
+    ViewData["Title Dashboard"] = "Ranking System";
+    ViewData["Category"] = "Ranking";
+    ViewData["SubCategory"] = "Viewing";
+}
+
+
+<!-- Container for demo purpose -->
+<div class="container px-4">
+    <!-- Section: Sales Performance KPIs -->
+    <div class="row">
+        <div class="col">
+
+            <div class="card shadow-0">
+                <div class="card-header border-0 p-3">
+                    <strong>Best Customer of Day (@Model.CurrentDay.ToLongDateString())</strong>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-borderless table-striped text-nowrap">
+                            <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">First name</th>
+                                <th scope="col">Last name</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                       
+                            @for (var i = 0; i < Model.ListBestCustomersOnDay.Count; i++)
+                            {
+                                <tr>
+                                    <th scope="row">@(stt= i+1)</th>
+                                    <td>@Model.ListBestCustomersOnDay[i].FName</td>
+                                    <td>@Model.ListBestCustomersOnDay[i].LName</td>
+                                    <td>@Model.ListTotalMoneyOfEachCustomerOnDay[i]</td>
+                                </tr>
+                            }
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+
+            <div class="card shadow-0">
+                <div class="card-header border-0 p-3">
+                    <strong>Best Customer of All Time</strong>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-borderless table-striped text-nowrap">
+                            <thead>
+                            <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">First name</th>
+                                    <th scope="col">Last name</th>
+                                    <th scope="col">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                             
+                                @for( j =0; j < Model.ListBestCustomersOnAllDay.Count; j++)
+                                {
+                                    <tr>
+                                        <th scope="row">@(stt = j +1)</th>
+                                        <td>@Model.ListBestCustomersOnAllDay[j].FName</td>
+                                        <td>@Model.ListBestCustomersOnAllDay[j].LName</td>
+                                        <td>@Model.ListTotalMoneyOfEachCustomerOnAllDay[j]</td>
+                                    </tr>
+                                }                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
