@@ -1,5 +1,6 @@
 using FinalProject_.Net.Data;
 using FinalProject_.Net.Service;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject_.Net
@@ -22,6 +23,18 @@ namespace FinalProject_.Net
 			builder.Services.AddScoped<TokenService>();
 			builder.Services.AddScoped<PasswordService>();
 			builder.Services.AddScoped<EmailService>();
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy =>
+                    policy.RequireRole("Admin"));
+            });
+
+			//builder.Services.Configure<RazorPagesOptions>(options =>
+			//{
+			//	options.Conventions.AuthorizeFolder("/admin", "AdminOnly"); // Apply your policy here
+			//});
+
+
 
 			var app = builder.Build();
 
@@ -39,16 +52,15 @@ namespace FinalProject_.Net
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
-		
 
-			app.MapRazorPages();
+            app.MapRazorPages();
             app.MapGet("/", context =>
             {
                 context.Response.Redirect("/admin/");
                 return Task.CompletedTask;
             });
-            app.UseExceptionHandler("/Error");
-            app.UseStatusCodePagesWithReExecute("/Error");
+
+            //app.UseStatusCodePagesWithReExecute("/Error");
 
 			app.Run();
 		}

@@ -4,6 +4,7 @@ using FinalProject_.Net.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject_.Net.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231215052952_updateRoleV4")]
+    partial class updateRoleV4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,7 +201,7 @@ namespace FinalProject_.Net.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RolesId")
+                    b.Property<int?>("RolesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
@@ -246,10 +248,8 @@ namespace FinalProject_.Net.Migrations
             modelBuilder.Entity("FinalProject_.Net.Model.Saler", b =>
                 {
                     b.HasOne("FinalProject_.Net.Model.Role", "Roles")
-                        .WithMany("Salers")
-                        .HasForeignKey("RolesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("RolesId");
 
                     b.Navigation("Roles");
                 });
@@ -267,11 +267,6 @@ namespace FinalProject_.Net.Migrations
             modelBuilder.Entity("FinalProject_.Net.Model.Product", b =>
                 {
                     b.Navigation("orderDetails");
-                });
-
-            modelBuilder.Entity("FinalProject_.Net.Model.Role", b =>
-                {
-                    b.Navigation("Salers");
                 });
 
             modelBuilder.Entity("FinalProject_.Net.Model.Saler", b =>

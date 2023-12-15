@@ -4,6 +4,7 @@ using FinalProject_.Net.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject_.Net.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231215052917_updateRoleV3")]
+    partial class updateRoleV3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,7 +248,7 @@ namespace FinalProject_.Net.Migrations
             modelBuilder.Entity("FinalProject_.Net.Model.Saler", b =>
                 {
                     b.HasOne("FinalProject_.Net.Model.Role", "Roles")
-                        .WithMany("Salers")
+                        .WithMany()
                         .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -267,11 +269,6 @@ namespace FinalProject_.Net.Migrations
             modelBuilder.Entity("FinalProject_.Net.Model.Product", b =>
                 {
                     b.Navigation("orderDetails");
-                });
-
-            modelBuilder.Entity("FinalProject_.Net.Model.Role", b =>
-                {
-                    b.Navigation("Salers");
                 });
 
             modelBuilder.Entity("FinalProject_.Net.Model.Saler", b =>

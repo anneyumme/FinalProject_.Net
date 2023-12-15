@@ -48,7 +48,12 @@ ViewData["SubCategory"]="Create";
                         <label class="form-label" for="form6Example4">Address</label>
                     </div>
 
-                 
+                    <div class="form-outline mb-4">
+                        <select asp-for="RoleId" asp-items="Model.Roles" data-mdb-select-init>
+                            <option value="">Select a role</option>
+                        </select>
+                        <label class="form-label select-label">Role</label>
+                    </div>
 
                     <!-- Message input -->
                     <div data-mdb-input-init class="form-outline mb-4">

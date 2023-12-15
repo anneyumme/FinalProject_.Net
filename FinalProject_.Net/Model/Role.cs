@@ -4,7 +4,8 @@ namespace FinalProject_.Net.Model;
 
 public class Role
 {
-	[Key]
-	public int RoleId { get; set; }
-	public string RoleName { get; set; }
+    [Key]
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection<Saler> Salers { get; set; }
 }

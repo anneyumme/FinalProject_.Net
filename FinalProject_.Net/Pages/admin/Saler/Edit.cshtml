@@ -16,6 +16,8 @@
                 </div>
                 <form method="post">
                     <input asp-for="Saler.Id" type="hidden" />
+                    <input asp-for="Saler.Password" type="hidden"/>
+                    <input asp-for="Saler.Avatar" type="hidden" />
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="row mb-4">
                         <div class="col">
@@ -50,6 +52,12 @@
                         <label class="form-label" for="form6Example4">Address</label>
                     </div>
 
+                    <div class="form-outline mb-4">
+                        <select asp-for="RoleId" asp-items="@Model.RoleList" data-mdb-select-init>
+                            <option value="">Select a role</option>
+                        </select>
+                        <label class="form-label select-label">Role</label>
+                    </div>
                     
 
                     <!-- Message input -->

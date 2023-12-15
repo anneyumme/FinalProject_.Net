@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="~/plugins/css/all.min.css"/>
 
 </head>
+@{
+    var userIdClaim = User.FindFirst("Id");
+    var userIdString = userIdClaim != null ? userIdClaim.Value : null;
+    int UserId = userIdString != null ? Convert.ToInt32(userIdString) : 0;
+}
 
 <style>
     body {
@@ -160,13 +165,10 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="#">My profile</a>
-                    </li>
+                        <a class="dropdown-item" asp-page="/admin/UserProfile" asp-route-id="@UserId">My profile</a>
+                    </li>              
                     <li>
-                        <a class="dropdown-item" href="#">Settings</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" asp-page="/admin/index" asp-route-handler="Logout">Logout</a>
+                        <a class="dropdown-item" asp-page="/admin/Logout">Logout</a>
                     </li>
                 </ul>
             </li>

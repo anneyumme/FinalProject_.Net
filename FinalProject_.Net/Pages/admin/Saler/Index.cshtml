@@ -33,6 +33,7 @@
                         <table>
                             <thead>
                             <tr>
+                                <th class="th-sm"></th>
                                 <th class="th-sm">First Name</th>
                                 <th class="th-sm">Last Name</th>
                                 <th class="th-sm">Email</th>
@@ -44,6 +45,19 @@
                                 @foreach(var item in Model.listSaler)
                                 {
                                     <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="/admin/saler?handler=Image&id=@item.Id"
+                                                     alt=""
+                                                    style="width: 45px; height: 45px"
+                                                    class="rounded-circle"
+                                                />
+                                                <div class="ms-3">
+                                                    <p class="fw-bold mb-1">@(item.FName +" " + item.LName)</p>
+                                                    <p class="text-muted mb-0">@item.EmailAddress</p>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>@item.FName</td>
                                         <td>@item.LName</td>
                                         <td>@item.EmailAddress</td>
@@ -60,9 +74,13 @@
                                                data-mdb-message="Are you sure want to delete">
                                                 <i class="fas fa-trash-alt fa-lg"></i>
                                             </a>
+                                            <a type="button" class="btn btn-primary" asp-page="/admin/saler/index" asp-route-id="@item.Id"
+                                               asp-route-handler="Email" data-mdb-ripple-init>
+                                                <i class="fas fa-envelope fa-lg"></i>
+                                            </a>
                                         </td>
                                     </tr>
-                                }    
+                                }
                             </tbody>
                         </table>
 

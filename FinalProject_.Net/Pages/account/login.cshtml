@@ -35,17 +35,23 @@
                         </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
+                                @if (TempData["Message"] != null)
+                                {
+                                    <div class="alert" role="alert" data-mdb-color="danger" data-mdb-alert-init>
+                                        @TempData["Message"]
+                                    </div>
+                                }
 
                                 <form method="post" >
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
                                     
                                     <div class="form-outline mb-4" data-mdb-input-init>
-                                        <input required type="email" id="form2Example17" asp-for="customer.EmailAddress" class="form-control form-control-lg" />
+                                        <input required type="email" id="form2Example17" asp-for="email" class="form-control form-control-lg" />
                                         <label class="form-label" for="form2Example17">Email address</label>
                                     </div>
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
-                                        <input required type="password" id="form2Example27" class="form-control form-control-lg" />
+                                        <input required type="password" id="form2Example27" asp-for="password" class="form-control form-control-lg" />
                                         <label class="form-label" for="form2Example27">Password</label>
                                     </div>
 

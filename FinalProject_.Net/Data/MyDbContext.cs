@@ -14,5 +14,6 @@ public class MyDbContext : DbContext
 	public DbSet<Product> Products { get; set; }
 	public DbSet<Customer> Customers { get; set; }
 	public DbSet<Saler> Salers { get; set; }
+	public DbSet<Role> Roles { get; set; }
 	
 }

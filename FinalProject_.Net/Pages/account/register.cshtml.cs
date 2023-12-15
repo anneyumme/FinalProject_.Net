@@ -11,6 +11,7 @@ namespace FinalProject_.Net.Pages.account;
 public class registerModel : PageModel
 {
 	[BindProperty] public string UserName { get; set; }
+	[BindProperty] public string Id { get; set; }
 	[BindProperty] public string Address { get; set; }
 	[BindProperty] public string FirstName { get; set; }
 	[BindProperty] public string LastName { get; set; }
@@ -34,15 +35,13 @@ public class registerModel : PageModel
 
 	public IActionResult OnGet(string token)
 	{
-		emailService.sendEmail("ninhdongnguyen@duck.com", "https://www.google.com/");
-		//var testToken = tokenService.GenerateToken("Ninh", "Dong", "ninhdong", "TPHCM", "ninhdong@ninhdong.com");
-		//Console.WriteLine(testToken);
 		if (token == null) return RedirectToPage("/Error");
-
 		if (tokenService.ValidateToken(token))
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var tokenS = tokenHandler.ReadJwtToken(token);
+
+			Id = tokenS.Claims.First(claim => claim.Type == "Id").Value;
 			UserName = tokenS.Claims.First(claim => claim.Type == "unique_name").Value;
 			Address = tokenS.Claims.First(claim => claim.Type == ClaimTypes.StreetAddress).Value;
 			FirstName = tokenS.Claims.First(claim => claim.Type == "FirstName").Value;
@@ -57,14 +56,15 @@ public class registerModel : PageModel
 
 	public IActionResult OnPost()
 	{
-		var saler = new Saler();
+		int id = int.Parse(Id);
+		var saler = db.Salers.Find(id);
 		saler.FName = FirstName;
 		saler.LName = LastName;
 		saler.Username = UserName;
 		saler.Address = Address;
 		saler.EmailAddress = Email;
 		saler.Password = passwordService.HashPassword(password);
-		db.Salers.Add(saler);
+		db.Salers.Update(saler);
 		db.SaveChanges();
 		return RedirectToPage("/Index");
 	}

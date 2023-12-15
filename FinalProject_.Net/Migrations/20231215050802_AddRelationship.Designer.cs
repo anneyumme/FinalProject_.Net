@@ -4,6 +4,7 @@ using FinalProject_.Net.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject_.Net.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231215050802_AddRelationship")]
+    partial class AddRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,7 +201,7 @@ namespace FinalProject_.Net.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RolesId")
+                    b.Property<int?>("RoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
@@ -208,7 +210,7 @@ namespace FinalProject_.Net.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RolesId");
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Salers");
                 });
@@ -245,13 +247,9 @@ namespace FinalProject_.Net.Migrations
 
             modelBuilder.Entity("FinalProject_.Net.Model.Saler", b =>
                 {
-                    b.HasOne("FinalProject_.Net.Model.Role", "Roles")
+                    b.HasOne("FinalProject_.Net.Model.Role", null)
                         .WithMany("Salers")
-                        .HasForeignKey("RolesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Roles");
+                        .HasForeignKey("RoleId");
                 });
 
             modelBuilder.Entity("FinalProject_.Net.Model.Customer", b =>

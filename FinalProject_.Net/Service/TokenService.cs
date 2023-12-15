@@ -10,7 +10,7 @@ public class TokenService
     readonly string _secretKey = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcwMjU1NTk3MCwiaWF0IjoxNzAyNTU1OTcwfQ.CElAbppwCbsgo7JBnRPIrFXKgsNd0IhcDTm4JbGG3pQ";
     readonly string _issuer = "Ninh Dong";
     readonly string _audience = "Bao Anh";
-    public string GenerateToken(string Fname, string Lname, string username, string address  , string email)
+    public string GenerateToken(int id, string Fname, string Lname, string username, string address  , string email)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_secretKey); // Use a secure key
@@ -19,7 +19,7 @@ public class TokenService
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-
+                new Claim("Id", id.ToString()),
                 new Claim("FirstName", Fname),
                 new Claim("LastName", Lname),
                 new Claim(ClaimTypes.Name, username),
@@ -27,7 +27,7 @@ public class TokenService
                 new Claim(ClaimTypes.Role, "Saler"),
                 new Claim(ClaimTypes.Email, email)
             }),
-            Expires = DateTime.UtcNow.AddMinutes(100),
+            Expires = DateTime.UtcNow.AddMinutes(2),
             Issuer= _issuer,
             Audience= _audience,
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
