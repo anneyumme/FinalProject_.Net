@@ -183,7 +183,7 @@ namespace FinalProject_.Net.Pages.admin
                 }
                 else if (value == 2) // Yesterday
                 {
-                    Orderslist = myDbContext.Orders.Where(o => o.orderDate >= yesterDay).ToList();
+                    Orderslist = myDbContext.Orders.Where(o => o.orderDate == yesterDay).ToList();
                 }
                 else if (value == 3) // Last 7 days
                 {
@@ -282,7 +282,19 @@ namespace FinalProject_.Net.Pages.admin
 
             List<String> chartData = new List<String>();
             List<String> chartDataOrder = new List<String>();
-         
+            decimal total1 = 0;
+            decimal totalQuantity1 = 0;
+
+            foreach (var item in Orderslist)
+            {
+                if (item.orderDate.Date == ListDateFromString[0])
+                {
+                    total1 += item.total;
+                    totalQuantity1++;
+                }
+            }
+            chartData.Add(total1.ToString());
+            chartDataOrder.Add(totalQuantity1.ToString());
 
             for (int i = 1; i < ListDateFromString.Count; i++)
             {
@@ -290,7 +302,7 @@ namespace FinalProject_.Net.Pages.admin
                 decimal totalQuantity = 0;
                 foreach (var item in Orderslist)
                 {                
-                        if (item.orderDate.Date >= ListDateFromString[i-1].Date && item.orderDate.Date < ListDateFromString[i].Date)
+                        if (item.orderDate.Date > ListDateFromString[i-1].Date && item.orderDate.Date <= ListDateFromString[i].Date)
                         {
                             total += item.total;
                             totalQuantity++;
@@ -299,6 +311,9 @@ namespace FinalProject_.Net.Pages.admin
                 chartData.Add(total.ToString());
                 chartDataOrder.Add(totalQuantity.ToString());
             }
+
+            
+
             ChartDataOrder = ConvertListToStringChartData(chartDataOrder);
             ChartDataRevenue = ConvertListToStringChartData(chartData);
         }

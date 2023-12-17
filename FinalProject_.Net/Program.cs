@@ -27,12 +27,20 @@ namespace FinalProject_.Net
             {
                 options.AddPolicy("AdminOnly", policy =>
                     policy.RequireRole("Admin"));
+                options.AddPolicy("SalerAndAdmin", policy =>
+                    policy.RequireRole("Saler", "Admin"));
             });
 
-			//builder.Services.Configure<RazorPagesOptions>(options =>
-			//{
-			//	options.Conventions.AuthorizeFolder("/admin", "AdminOnly"); // Apply your policy here
-			//});
+			builder.Services.Configure<RazorPagesOptions>(options =>
+			{
+				options.Conventions.AuthorizeFolder("/admin", "AdminOnly"); // Apply your policy here
+			});
+
+			builder.Services.Configure<RazorPagesOptions>(options =>
+			{
+				options.Conventions.AuthorizeFolder("/customer", "SalerAndAdmin"); // Apply your policy here
+
+			});
 
 
 
@@ -56,11 +64,11 @@ namespace FinalProject_.Net
             app.MapRazorPages();
             app.MapGet("/", context =>
             {
-                context.Response.Redirect("/admin/");
+                context.Response.Redirect("/customer/");
                 return Task.CompletedTask;
             });
 
-            //app.UseStatusCodePagesWithReExecute("/Error");
+			app.UseStatusCodePagesWithReExecute("/Error");
 
 			app.Run();
 		}

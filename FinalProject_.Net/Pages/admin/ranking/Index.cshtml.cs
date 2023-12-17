@@ -31,16 +31,29 @@ namespace FinalProject_.Net.Pages.admin.ranking
 
         public void FilterObjectOnDay(DateTime date)
         {
-            List<Customer> listCustomerOnDay = myDbContext.Customers
-                .Include(c => c.Orders)
+            // Load all customer on day 
+            var listCustomerOnDay = myDbContext.Customers
                 .Where(c => c.Orders.Any(o => o.orderDate.Date == date.Date))
+                .Select(c => new
+                {
+                    Customer = c, // or select specific fields of the customer
+                    Orders = c.Orders.Where(o => o.orderDate.Date == date.Date).ToList()
+                })
+                .ToList()
+                .Select(x =>
+                {
+                    x.Customer.Orders = x.Orders;
+                    return x.Customer;
+                })
                 .ToList();
+
+
             // Top 5 best customers on day with highest total money
             ListBestCustomersOnDay = listCustomerOnDay.
                 OrderByDescending(c => c.Orders.Sum(o => o.total)).Take(5).ToList();
             // List Total money of each customer
             ListTotalMoneyOfEachCustomerOnDay =
-                ListBestCustomersOnDay.Select(c=> c.Orders.Sum(o=>o.total)).ToList();
+                ListBestCustomersOnDay.Select(c => Math.Round(c.Orders.Sum(o => o.total), 2)).ToList();
         }
         public void FilterObjectOnAllDay()
         {

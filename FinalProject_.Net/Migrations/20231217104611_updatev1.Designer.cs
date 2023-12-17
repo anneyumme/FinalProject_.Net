@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject_.Net.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231215052601_updateRoleV2")]
-    partial class updateRoleV2
+    [Migration("20231217104611_updatev1")]
+    partial class updatev1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,10 +65,10 @@ namespace FinalProject_.Net.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SalerId")
+                    b.Property<int>("SalerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("orderDate")
@@ -110,6 +110,9 @@ namespace FinalProject_.Net.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -201,7 +204,7 @@ namespace FinalProject_.Net.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RolesId")
+                    b.Property<int>("RolesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
@@ -217,13 +220,21 @@ namespace FinalProject_.Net.Migrations
 
             modelBuilder.Entity("FinalProject_.Net.Model.Order", b =>
                 {
-                    b.HasOne("FinalProject_.Net.Model.Customer", null)
+                    b.HasOne("FinalProject_.Net.Model.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("FinalProject_.Net.Model.Saler", null)
+                    b.HasOne("FinalProject_.Net.Model.Saler", "Saler")
                         .WithMany("Orders")
-                        .HasForeignKey("SalerId");
+                        .HasForeignKey("SalerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Saler");
                 });
 
             modelBuilder.Entity("FinalProject_.Net.Model.OrderDetail", b =>
@@ -249,7 +260,9 @@ namespace FinalProject_.Net.Migrations
                 {
                     b.HasOne("FinalProject_.Net.Model.Role", "Roles")
                         .WithMany("Salers")
-                        .HasForeignKey("RolesId");
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Roles");
                 });

@@ -11,6 +11,8 @@ public class Order
 	public string shippingMethod { get; set; }
 	public decimal total { get; set; }
 	public DateTime orderDate { get; set; }
+	public Customer Customer { get; set; }
+	public Saler Saler { get; set; }
 	public ICollection<OrderDetail> OrderDetails { get; set; }
 
 	
