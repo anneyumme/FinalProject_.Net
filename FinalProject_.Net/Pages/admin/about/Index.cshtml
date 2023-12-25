@@ -1,0 +1,66 @@
+﻿@page
+@model FinalProject_.Net.Pages.admin.about.IndexModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["isOverview"] = false;
+    ViewData["Title Dashboard"] = "About";
+    ViewData["Category"] = "about";
+    ViewData["SubCategory"] = "Viewing";
+
+}
+<style>
+
+    .testimonial-card .card-up {
+        height: 120px;
+        overflow: hidden;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+    }
+
+    .aqua-gradient {
+        background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+    }
+
+    .testimonial-card .avatar {
+        width: 120px;
+        margin-top: -60px;
+        overflow: hidden;
+        border: 5px solid #fff;
+        border-radius: 50%;
+    }
+</style>
+<div class="container">
+    <section class="mx-auto my-5" style="max-width: 50rem;">
+        <div class="d-flex flex-row mb-3">
+            <div class="p-2">
+                <div class="card testimonial-card mt-2 mb-3">
+                    <div class="card-up aqua-gradient"></div>
+                    <div class="avatar mx-auto white">
+                        <img src="/Avatar1.png" class="rounded-circle img-fluid"
+                             alt="woman avatar">
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title font-weight-bold">Nguyễn Thiện Ninh Đồng - 521H0444 (Leader)</h4>
+                        <hr>
+                        <p><i class="fas fa-quote-left"></i> We created this website for final exam purposes only </p>
+                    </div>
+                </div>  
+                </div>
+            <div class="p-2">
+                <div class="card testimonial-card mt-2 mb-3">
+                    <div class="card-up aqua-gradient"></div>
+                    <div class="avatar mx-auto white">
+                        <img src="/avatar2.png" class="rounded-circle img-fluid"
+                             alt="man avatar">
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title font-weight-bold">Trần Bảo Anh - 520H0512  </h4>
+                        <hr>
+                        <p><i class="fas fa-quote-left"></i> We are the same idea! </p>
+                    </div>
+                </div>  
+            </div>
+                
+        </div>
+    </section>
+</div>

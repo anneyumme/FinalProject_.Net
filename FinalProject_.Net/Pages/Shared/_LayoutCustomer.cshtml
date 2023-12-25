@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - FinalProject_.Net</title>
+    <title>@ViewData["Title"] FinalProject</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/FinalProject_.Net.styles.css" asp-append-version="true"/>
@@ -14,9 +14,19 @@
     <!-- MDB ESSENTIAL -->
     <link rel="stylesheet" href="~/css/mdb.min.css"/>
     <!-- MDB PLUGINS -->
+    <link href="~/Services_ECommerce_v2-01.png" rel="shortcut icon" type="image/png" />
+
+    
+
     <link rel="stylesheet" href="~/plugins/css/all.min.css"/>
 
+
 </head>
+@{
+    var userIdClaim = User.FindFirst("Id");
+    var userIdString = userIdClaim != null ? userIdClaim.Value : null;
+    int UserId = userIdString != null ? Convert.ToInt32(userIdString) : 0;
+}
 
 <style>
     .input-group {
@@ -43,6 +53,10 @@
         white-space: nowrap; 
     }
 
+    body {
+        background-color: #F2F3F5;
+    }
+
 
   </style>
 
@@ -64,7 +78,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
                     <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                        <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo"
+                        <img src="/Services_ECommerce_v2-01.png" height="15" alt="MDB Logo"
                              loading="lazy" />
                     </a>
                     <!-- Left links -->
@@ -86,8 +100,9 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Icon -->
-                    <a class="text-reset me-3" href="#">
-                        <i class="fas fa-shopping-cart"></i>
+                    <a class="text-reset me-3" asp-page="/admin/index">
+                        <button type="button" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Admin Panel</button>
+
                     </a>
 
                     <!-- Notifications -->
@@ -113,18 +128,15 @@
                     <div class="dropdown">
                         <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
                            id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+                            <img src="https://i.pravatar.cc/300" class="rounded-circle" height="25"
                                  alt="Black and White Portrait of a Man" loading="lazy" />
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="#">My profile</a>
+                                <a class="dropdown-item" asp-page="/customer/UserProfile" asp-route-id="@UserId">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Settings</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" asp-page="/Logout">Logout</a>
                             </li>
                         </ul>
                     </div>

@@ -8,7 +8,7 @@ namespace FinalProject_.Net
 	public class Program
 	{
 		public static void Main(string[] args)
-		{
+	{
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
@@ -57,7 +57,10 @@ namespace FinalProject_.Net
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseRouting();
+            app.UseExceptionHandler("/Error500");
+            app.UseStatusCodePagesWithReExecute("/Error");
+
+            app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
 
@@ -67,8 +70,7 @@ namespace FinalProject_.Net
                 context.Response.Redirect("/customer/");
                 return Task.CompletedTask;
             });
-
-			app.UseStatusCodePagesWithReExecute("/Error");
+           
 
 			app.Run();
 		}

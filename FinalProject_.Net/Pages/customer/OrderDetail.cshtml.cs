@@ -26,8 +26,6 @@ namespace FinalProject_.Net.Pages.customer
 
 
 
-
-
         public IActionResult OnGetImage(int id)
         {
             var myproduct = myDbContext.Products.Find(id);

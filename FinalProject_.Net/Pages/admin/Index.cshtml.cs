@@ -100,7 +100,7 @@ namespace FinalProject_.Net.Pages.admin
                 decimal totalQuantity1 = 0;
                 foreach (var item in Orderslist)
                 {
-                    if (item.orderDate <= ListDateFromString[0])
+                    if (item.orderDate == ListDateFromString[0])
                     {
                         totalOrder += item.total;
                         totalQuantity1++;
@@ -115,7 +115,7 @@ namespace FinalProject_.Net.Pages.admin
                     decimal totalQuantity = 0;
                     foreach (var order in Orderslist)
                     {
-                        if (order.orderDate <= ListDateFromString[i] && order.orderDate > ListDateFromString[i - 1])
+                        if (order.orderDate.Date <= ListDateFromString[i] && order.orderDate.Date > ListDateFromString[i - 1])
                         {
                             total += order.total;
                             totalQuantity++;

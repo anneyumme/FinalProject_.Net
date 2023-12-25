@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - FinalProject_.Net</title>
+    <title>@ViewData["Title"] - FinalProject</title>
+    <link href="~/Services_ECommerce_v2-01.png" rel="shortcut icon" type="image/png" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/FinalProject_.Net.styles.css" asp-append-version="true"/>
@@ -15,6 +16,8 @@
     <link rel="stylesheet" href="~/css/mdb.min.css"/>
     <!-- MDB PLUGINS -->
     <link rel="stylesheet" href="~/plugins/css/all.min.css"/>
+    <link rel="icon" type="image/png" href="~/favicon.ico" sizes="32x32">
+
 
 </head>
 @{
@@ -46,9 +49,9 @@
      class="sidenav"
      data-mdb-scroll-container="#scroll-container"
      data-mdb-mode="side">
-    <a class="ripple d-flex justify-content-center pt-4 pb-2" href="#!" data-mdb-ripple-color="primary">
-        <img id="MDB-logo" src="https://mdbcdn.b-cdn.net/wp-content/uploads/2018/06/logo-mdb-jquery-small.webp"
-             alt="MDB Logo" draggable="false"/>
+    <a class="ripple d-flex justify-content-center pt-4 pb-2" href="/admin/index" data-mdb-ripple-color="primary">
+        <img id="" src="/Services_ECommerce_v2-01.png" 
+             alt="Logo" draggable="false" style="width:70px" />
     </a>
 
     <hr class="hr">
@@ -89,7 +92,7 @@
         </li>
 
         <li class="sidenav-item">
-            <a class="sidenav-link" href="">
+            <a class="sidenav-link" asp-page="/admin/about/index" >
                 <i class="fas fa-users fa-fw me-3"></i><span>Team</span>
             </a>
         </li>

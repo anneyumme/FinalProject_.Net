@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject_.Net.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231217104611_updatev1")]
-    partial class updatev1
+    [Migration("20231218045922_updateAvatar")]
+    partial class updateAvatar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

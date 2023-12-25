@@ -14,7 +14,7 @@
                 <div class="card card-custom gutter-b bg-white border-0">
                     <div class="card-body">
                         <div class="input-group rounded">
-                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
+                            <input id ="searchInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                             <span class="input-group-text border-0" id="search-addon">
                                 <i class="fas fa-search"></i>
                             </span>
@@ -25,7 +25,7 @@
                             @foreach (var item in Model.listProduct)
                             {
                                 <div class="col">
-                                    <div class="card h-100">
+                                    <div class="card h-100 product-card">
                                         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                                              data-mdb-ripple-color="light">
                                             <img src="/customer?handler=Image&id=@item.Id" class="card-img-top"
@@ -219,4 +219,25 @@
 
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchInput = document.getElementById('searchInput');
+
+        searchInput.addEventListener('keyup', function() {
+            var filter = searchInput.value.toLowerCase();
+            var cards = document.getElementsByClassName('product-card');
+
+            for (var i = 0; i < cards.length; i++) {
+                var cardTitle = cards[i].querySelector('.card-title').textContent;
+                var cardDescription = cards[i].querySelector('.card-text').textContent;
+            
+                if (cardTitle.toLowerCase().indexOf(filter) > -1 || cardDescription.toLowerCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        });
+    });
+
 </script>
