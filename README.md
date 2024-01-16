@@ -2,7 +2,7 @@
 
 ## Overview
 
-This  POS System, developed as a final project for a junior university course, demonstrates a comprehensive application of Razor Pages with a SQL Server backend. The project encapsulates essential ecommerce functionalities and is an exemplar of innovative web development practices in a research-driven business environment.
+This  POS System, developed as a final project for a junior university course, demonstrates a comprehensive application of Razor Pages with a SQL Server backend. The project encapsulates essential POS system functionalities and is an exemplar of innovative web development practices in a research-driven business environment.
 
 ### Key Features
 
