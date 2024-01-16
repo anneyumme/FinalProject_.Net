@@ -1,7 +1,7 @@
 # POS System Website Project with Razor Pages and SQL Server for Final Semester 
 
 ## Overview
-This POS System is designed to facilitate effective transaction processing, product and customer management, and provide analytics for businesses.
+This POS System (Food) is designed to facilitate effective transaction  processing, product and customer management, and provide analytics for businesses.
 
 ## Features
 
