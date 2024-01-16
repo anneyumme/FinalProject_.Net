@@ -1,15 +1,33 @@
 # POS System Website Project with Razor Pages and SQL Server for Final Semester 
 
 ## Overview
+This POS System is designed to facilitate effective transaction processing, product and customer management, and provide analytics for businesses.
 
-This  POS System, developed as a final project for a junior university course, demonstrates a comprehensive application of Razor Pages with a SQL Server backend. The project encapsulates essential POS system functionalities and is an exemplar of innovative web development practices in a research-driven business environment.
+## Features
 
-### Key Features
+### Account Management
+- Administrator and sales staff accounts.
+- Automated email notifications for new accounts.
 
-- **Product Catalog**: A dynamic display of products, categorized for ease of access.
-- **User Authentication**: Secure user registration and login functionality.
-- **Order Management**: Efficient handling of customer orders from placement to fulfillment.
-- **Admin Panel**: An intuitive interface for site administrators to manage products and orders.
+### Product Catalog Management
+- Admin-level operations for product management.
+- View-only access for sales staff.
+
+### Customer Management
+- Auto-creation of customer accounts on first purchase.
+- Access to customer details and history.
+
+### Transaction Processing
+- Multiple methods for product entry during sales.
+- Real-time updates of product lists and totals.
+
+### Reporting and Analytics
+- Comprehensive reporting features for different user roles.
+- Detailed analytics on sales data.
+
+### Additional Features
+- Emphasis on user interface quality.
+- Efficient product deployment.
 
 ## Technologies Used
 
