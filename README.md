@@ -42,7 +42,7 @@ Experience the functionality and seamless user experience of our POS System by a
 To access the demo, use the following credentials:
 
 - **Demo URL**: [POS System Demo](http://159.89.194.24:1111/)
-- **Demo Video (Recommend)**: [Here](https://cloud.ninhdong.top/s/g3xr8pJJs2XqijS)
+- **Demo Video (Recommend)**: [Here](https://file.ninhdong.top/api/public/dl/jbR-A5ov?inline=true)
 - **Account**: `ninhdongnguyen@duck.com`
 - **Password**: `ninhdong123`
 
